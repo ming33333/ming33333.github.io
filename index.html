@@ -15,20 +15,18 @@
             .then(response => response.json())
             .then(data => {
                 const quizContainer = document.getElementById('quiz-container');
-                data.quizzes.forEach((quiz, index) => {
+                data.quizzes.forEach((quiz, indexQuiz) => {
                     const quizElement = document.createElement('div');
                     console.log(quiz);
                     quizElement.innerHTML = `
                         <h2>${quiz.title}</h2>
-                        ${quiz.questions.map((question, qIndex) => `
+                        ${quiz.questions.map((question, indexQuestion) => `
                             <div>
                                 <p>${question.question}</p>
-                                ${question.options.map((option, oIndex) => `
-                                    <label>
-                                        <input type="radio" name="quiz${index}question${qIndex}" value="${option}">
-                                        ${option}
-                                    </label>
-                                `).join('')}
+                                    <ul>
+                                        <li name="quiz${indexQuiz}question${indexQuestion}" value="${question.answer}">
+                                        ${question.answer}
+                                    </ul>
                             </div>
                         `).join('')}
                     `;
