@@ -7,6 +7,34 @@
 </head>
 <body>
     <h1>Ming Quizzes</h1>
-    <p>Click a quiz below Please</p>
+    <p>Click a quiz below</p>
+    <div id="quiz-container"></div>
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const quizContainer = document.getElementById('quiz-container');
+                data.quizzes.forEach((quiz, index) => {
+                    const quizElement = document.createElement('div');
+                    console.log(quiz);
+                    quizElement.innerHTML = `
+                        <h2>${quiz.title}</h2>
+                        ${quiz.questions.map((question, qIndex) => `
+                            <div>
+                                <p>${question.question}</p>
+                                ${question.options.map((option, oIndex) => `
+                                    <label>
+                                        <input type="radio" name="quiz${index}question${qIndex}" value="${option}">
+                                        ${option}
+                                    </label>
+                                `).join('')}
+                            </div>
+                        `).join('')}
+                    `;
+                    quizContainer.appendChild(quizElement);
+                });
+            })
+            .catch(error => console.error('Error loading quiz data:', error));
+    </script>
 </body>
 </html>
