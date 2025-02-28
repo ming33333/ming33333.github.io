@@ -10,6 +10,7 @@
     <p>Click a quiz below</p>
     <div id="quiz-container"></div>
     <script>
+        console.log('Loading quiz data...');
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
