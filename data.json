@@ -4,8 +4,9 @@
             "title": "Quiz 1",
             "questions": [
                 {
-                    "question": "What is the capital of France?",
-                    "answer": "Paris"
+                    "question": "CORS policy: Cross origin requests",
+                    "answer": "are requests made to a different domain than the one serving the page"
+                    
                 },
                 {
                     "question": "What is the largest planet in our solar system?",
